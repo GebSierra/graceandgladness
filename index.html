@@ -143,7 +143,7 @@ body { overflow: hidden; }
 
   <nav class="ways after" aria-label="Explore">
     <a class="way" href="bible/"><b>The Bible in Three Pictures</b><small>The whole story in twelve steps</small></a>
-    <a class="way" href="memory/"><b>Scripture Memory</b><small>Walk through a book of the Bible</small></a>
+    <a class="way" href="memory/"><b>Scripture Memory</b><small>Memorize a book of the Bible with a walkable location</small></a>
     <a class="way" href="gospel/"><b>The Gospel</b><small>Read it and share it</small></a>
     <a class="way" href="about/"><b>About</b><small>Why Grace and Gladness</small></a>
   </nav>
@@ -155,9 +155,7 @@ body { overflow: hidden; }
   var shown = false;
   function reveal() { if (shown) return; shown = true; document.body.classList.add('revealed'); }
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { reveal(); return; }
-  v.addEventListener('ended', reveal);
-  v.addEventListener('error', reveal, true);
-  setTimeout(reveal, 9000); // never leave the page empty if the video stalls
+  setTimeout(reveal, 3000); // the words fade in three seconds into the scene
   var p = v.play();
   if (p && p.catch) p.catch(reveal);
 })();
