@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scripture Memory | Grace and Gladness</title>
+<meta name="description" content="Walk through a book of the Bible and hold it in memory, verse by verse, one place at a time.">
+<meta name="theme-color" content="#FAF8EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.worlds { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+.world { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: var(--paper-2); border-radius: 4px; padding: 28px 26px 24px; border: 1px solid transparent; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.world:hover { color: var(--ink); border-color: var(--line); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(58,42,28,.12); }
+.world h2 { margin-top: 14px; font-weight: 600; font-size: 36px; line-height: 1.05; }
+.world p { margin-top: 10px; color: var(--ink-soft); flex-grow: 1; }
+.world .go { margin-top: 20px; font-weight: 600; color: var(--grace); }
+.world .go::after { content: " →"; }
+.tag { align-self: flex-start; font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--grace); border: 1px solid currentColor; border-radius: 2px; padding: 2px 8px; }
+.tag.wip { color: var(--glad); }
+.sub { font-weight: 600; font-size: 32px; margin-bottom: 12px; }
+@media (max-width: 900px) { .worlds { grid-template-columns: minmax(0,1fr); } }
+@media (prefers-reduced-motion: reduce) { .world { transition: none; } }
+</style>
+</head>
+<body>
+<header class="banner">
+  <div class="topbar">
+    <a class="wordmark" href="../"><span class="grace">Grace</span> <i>and</i> <span class="glad">Gladness</span></a>
+    <nav class="menu" aria-label="Main">
+      <a href="../bible/">The Bible in Three Pictures</a>
+      <a href="../memory/" aria-current="page">Scripture Memory</a>
+      <a href="../gospel/">The Gospel</a>
+      <a href="../about/">About</a>
+    </nav>
+  </div>
+</header>
+<main class="page">
+  <p class="eyebrow rise">Scripture Memory</p>
+  <h1 class="title rise d1">Walk through a book of the Bible.</h1>
+  <p class="lede rise d2">Each book is a small ancient town you can walk through. Every room holds five verses, each tied to one object. Walk the same path enough times and the words come back when you picture the place. I call it location-triggered memory.</p>
+
+  <div class="worlds">
+    <a class="world rise d2" href="colossians/">
+      <span class="tag">The whole book</span>
+      <h2>Colossians</h2>
+      <p>A walk through the town of Colossae, four chapters in four districts.</p>
+      <span class="go">Enter Colossae</span>
+    </a>
+    <a class="world rise d3" href="james/">
+      <span class="tag wip">Work in progress</span>
+      <h2>James</h2>
+      <p>Chapter 1 is built, in the town's market square. Chapters 2 to 5 are coming.</p>
+      <span class="go">Enter the agora</span>
+    </a>
+    <a class="world rise d4" href="tabernacle/">
+      <span class="tag">Free roam</span>
+      <h2>The Tabernacle</h2>
+      <p>The tabernacle in the wilderness, built to the cubit from Exodus, with the camp of Israel round it.</p>
+      <span class="go">Walk the camp</span>
+    </a>
+  </div>
+
+  <hr class="rule">
+  <div class="prose">
+    <h2 class="sub">How to use it</h2>
+    <p>Learn the verses by rote first. Then walk the town and place each verse on its object as you go. Make your own pictures; they stick better than anyone else's.</p>
+    <p>It works best on a laptop or tablet. Use the arrow keys or the on-screen joystick to walk, and drag to look around.</p>
+  </div>
+</main>
+<footer class="foot">
+  <a class="wordmark" href="../"><span class="grace">Grace</span> <i>and</i> <span class="glad">Gladness</span></a>
+  <span>Helping hungry believers grow.</span>
+</footer>
+</body>
+</html>

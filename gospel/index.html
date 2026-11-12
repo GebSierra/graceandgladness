@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Gospel | Grace and Gladness</title>
+<meta name="description" content="A short, clear account of what Jesus did and why it matters. Read it and share it.">
+<meta name="theme-color" content="#FAF8EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.share { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+.address { font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: var(--glad); text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
+.address:hover { color: #7A3815; }
+.frame { margin: 40px 0 0; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 0 var(--line), 0 24px 50px rgba(58,42,28,.18); border: 1px solid var(--line); }
+.bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--paper-2); border-bottom: 1px solid var(--line); font-size: 16px; }
+.bar i { width: 10px; height: 10px; border-radius: 50%; background: #CDBB92; }
+.bar span { margin-left: 8px; flex-grow: 1; background: var(--paper); border-radius: 3px; padding: 1px 12px; color: var(--ink-soft); }
+.frame iframe { display: block; width: 100%; height: min(78vh, 760px); border: 0; }
+.fallback { margin-top: 14px; font-size: 17px; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<header class="banner">
+  <div class="topbar">
+    <a class="wordmark" href="../"><span class="grace">Grace</span> <i>and</i> <span class="glad">Gladness</span></a>
+    <nav class="menu" aria-label="Main">
+      <a href="../bible/">The Bible in Three Pictures</a>
+      <a href="../memory/">Scripture Memory</a>
+      <a href="../gospel/" aria-current="page">The Gospel</a>
+      <a href="../about/">About</a>
+    </nav>
+  </div>
+</header>
+<main class="page">
+  <p class="eyebrow rise">The Gospel</p>
+  <h1 class="title rise d1">Good news worth passing on.</h1>
+  <p class="lede rise d2">A short, clear account of what Jesus did and why it matters. Read it, then share this with your friends.</p>
+
+  <div class="share rise d3">
+    <a class="address" href="https://www.hegavehis.life">www.hegavehis.life</a>
+    <button class="btn" type="button" id="copy" data-link="https://www.hegavehis.life">Copy the link</button>
+  </div>
+
+  <figure class="frame rise d4">
+    <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>www.hegavehis.life</span></div>
+    <iframe src="https://www.hegavehis.life" title="The gospel tract at www.hegavehis.life" loading="lazy"></iframe>
+  </figure>
+  <p class="fallback">If the page above does not show, <a href="https://www.hegavehis.life">open www.hegavehis.life</a>.</p>
+</main>
+<script>
+(function () {
+  var b = document.getElementById('copy'), label = b.textContent;
+  b.addEventListener('click', function () {
+    var link = b.getAttribute('data-link');
+    var done = function () { b.textContent = 'Link copied'; setTimeout(function () { b.textContent = label; }, 2500); };
+    if (navigator.share && matchMedia('(pointer: coarse)').matches) { navigator.share({ title: 'He gave his life', url: link }).catch(function () {}); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, function () { prompt('Copy this link:', link); });
+    else prompt('Copy this link:', link);
+  });
+})();
+</script>
+<footer class="foot">
+  <a class="wordmark" href="../"><span class="grace">Grace</span> <i>and</i> <span class="glad">Gladness</span></a>
+  <span>Helping hungry believers grow.</span>
+</footer>
+</body>
+</html>
