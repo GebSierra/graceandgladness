@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
-<link rel="preload" as="image" href="assets/road-to-antioch.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/road-to-antioch-poster.jpg">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 html, body { height: 100%; }
@@ -33,12 +33,6 @@ body { overflow: hidden; }
   background:
     linear-gradient(to bottom, rgba(250,248,236,.96) 0%, rgba(250,248,236,.78) 16%, rgba(250,248,236,.25) 38%, rgba(250,248,236,0) 52%),
     radial-gradient(120% 60% at 50% 105%, rgba(58,42,28,.18), rgba(58,42,28,0) 60%);
-}
-.glow {
-  position: absolute; left: 68.5%; top: 57%;
-  width: 46vmax; aspect-ratio: 1; transform: translate(-50%, -50%);
-  background: radial-gradient(closest-side, rgba(255,247,214,.95), rgba(252,224,160,.5) 38%, rgba(252,224,160,0));
-  mix-blend-mode: screen; opacity: .5; pointer-events: none;
 }
 
 /* Words */
@@ -86,14 +80,10 @@ body { overflow: hidden; }
 .way small::after { content: " →"; }
 
 /* Plays once on each page load, then rests. */
-@keyframes dawn { from { filter: brightness(.74) saturate(.65) sepia(.15); transform: scale(1.06); } to { filter: none; transform: none; } }
-@keyframes sunrise { from { opacity: 0; transform: translate(-50%, -32%) scale(.55); } to { opacity: .5; transform: translate(-50%, -50%) scale(1); } }
 @keyframes settle { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.art img { animation: dawn 9s cubic-bezier(.2,.6,.2,1) both; transform-origin: 68% 57%; }
-.glow { animation: sunrise 9s cubic-bezier(.2,.6,.2,1) both; }
 .ways .way { animation: settle 1.2s cubic-bezier(.2,.7,.2,1) both; animation-delay: 2.2s; }
 .ways .way:nth-child(2) { animation-delay: 2.35s; } .ways .way:nth-child(3) { animation-delay: 2.5s; } .ways .way:nth-child(4) { animation-delay: 2.65s; }
-@media (prefers-reduced-motion: reduce) { .art img, .glow, .ways .way { animation: none; } .way { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .ways .way { animation: none; } .way { transition: none; } }
 
 /* Short or narrow screens */
 @media (max-height: 760px) and (min-width: 721px) {
@@ -111,7 +101,6 @@ body { overflow: hidden; }
   .top { justify-content: center; }
   .top .menu { display: none; }
   .art img, .art video { object-position: 50% 100%; }
-  .glow { left: 70%; top: 70%; }
   .lead { margin-top: 2vh; }
   .ornament { margin: 12px 0 10px; }
   .ornament::before, .ornament::after { width: 32px; }
@@ -127,12 +116,10 @@ body { overflow: hidden; }
 <body>
 <main class="scene">
   <div class="art" aria-hidden="true">
-    <!-- To use the animated painting, see README.md. -->
-    <picture>
-      <source srcset="assets/road-to-antioch.webp" type="image/webp">
-      <img src="assets/road-to-antioch.jpg" alt="" width="1340" height="746" fetchpriority="high">
-    </picture>
-    <div class="glow"></div>
+    <!-- Plays once on each page load and holds its last frame. No loop. -->
+    <video id="scene" muted playsinline preload="auto" poster="assets/road-to-antioch-poster.jpg">
+      <source src="assets/road-to-antioch.mp4" type="video/mp4">
+    </video>
   </div>
 
   <header class="top">
@@ -160,5 +147,14 @@ body { overflow: hidden; }
     <a class="way" href="about/"><b>About</b><small>Why Grace and Gladness</small></a>
   </nav>
 </main>
+<script>
+// Play the scene once, unless the visitor has asked their device to reduce motion.
+(function () {
+  var v = document.getElementById('scene');
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var p = v.play();
+  if (p && p.catch) p.catch(function () {});
+})();
+</script>
 </body>
 </html>

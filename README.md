@@ -27,25 +27,15 @@ The site for graceandgladness.com. Plain HTML and CSS, no build step.
 
 ## The opening animation
 
-The opening plays once each time the page loads, then rests. Right now it is
-the still painting with a coded sunrise: the picture brightens and a glow rises
-behind the town.
+The opening is `assets/road-to-antioch.mp4`: six seconds, muted, no loop.
+It plays once on each page load and holds its last frame. A refresh plays it
+again. Visitors who ask their device to reduce motion see the still
+`assets/road-to-antioch-poster.jpg` instead, and so do phones that refuse to
+autoplay.
 
-When the animated version of the painting is ready:
-
-1. Export it as `assets/road-to-antioch.mp4`. Keep it short, muted, the same
-   shape as the painting, and under about 3 MB. It should end on a still frame.
-2. In `index.html`, replace the `<picture>...</picture>` block and the
-   `<div class="glow"></div>` line with:
-
-   ```html
-   <video muted playsinline autoplay preload="auto" poster="assets/road-to-antioch.jpg">
-     <source src="assets/road-to-antioch.mp4" type="video/mp4">
-   </video>
-   ```
-
-   There is no `loop`, so it plays once and holds its last frame. A refresh
-   plays it again. Phones that refuse to autoplay show the still painting.
+It was made from the painting `assets/road-to-antioch.jpg` with Google Veo 3.1
+Lite through OpenRouter (6 seconds, 1080p, no audio), then trimmed and
+compressed with ffmpeg.
 
 ## The memory worlds
 
