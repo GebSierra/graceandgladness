@@ -86,7 +86,7 @@ body { overflow: hidden; }
 .revealed .after { opacity: 1; visibility: visible; transform: none; transition: opacity 1.2s cubic-bezier(.2,.7,.2,1), transform 1.2s cubic-bezier(.2,.7,.2,1), visibility 0s; }
 .revealed .verse.after { transition-delay: .2s; }
 .revealed .btn.after { transition-delay: .4s; }
-.revealed .ways.after { transition-delay: .7s; }
+.revealed .ways.after { transition-delay: .3s; }
 .revealed .btn.after:hover { transform: translateY(-1px); transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) { .after, .revealed .after { transition: none; } .way { transition: none; } }
 
@@ -155,7 +155,7 @@ body { overflow: hidden; }
   var shown = false;
   function reveal() { if (shown) return; shown = true; document.body.classList.add('revealed'); }
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { reveal(); return; }
-  setTimeout(reveal, 3000); // the words fade in three seconds into the scene
+  setTimeout(reveal, 2000); // the words fade in two seconds into the scene
   var p = v.play();
   if (p && p.catch) p.catch(reveal);
 })();
