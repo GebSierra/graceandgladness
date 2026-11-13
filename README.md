@@ -14,7 +14,7 @@ The site for graceandgladness.com. Plain HTML and CSS, no build step.
 
 - `assets/site.css`: the shared look for every page.
 - `assets/ltm.js`: where the memory worlds live (see below).
-- `assets/road-to-antioch.webp` and `.jpg`: the opening painting.
+- `assets/road-watercolor.jpg`: the painting, also used in the page banners.
 - `CNAME`: tells GitHub Pages the site's address.
 - `.nojekyll`: tells GitHub Pages to serve the files as they are.
 
@@ -27,15 +27,16 @@ The site for graceandgladness.com. Plain HTML and CSS, no build step.
 
 ## The opening animation
 
-The opening is `assets/road-to-antioch.mp4`: six seconds, muted, no loop.
+The opening is `assets/road-watercolor.mp4`: four seconds, muted, no loop.
 It plays once on each page load and holds its last frame. A refresh plays it
 again. Visitors who ask their device to reduce motion see the still
-`assets/road-to-antioch-poster.jpg` instead, and so do phones that refuse to
+`assets/road-watercolor-poster.jpg` instead, and so do phones that refuse to
 autoplay.
 
-It was made from the painting `assets/road-to-antioch.jpg` with Google Veo 3.1
-Lite through OpenRouter (6 seconds, 1080p, no audio), then trimmed and
-compressed with ffmpeg.
+It was made from the watercolour `assets/road-watercolor.jpg` (its sky extended to 16:9 in
+`assets/road-watercolor-169.jpg`) with Google Veo 3.1 Lite through OpenRouter
+(4 seconds, 720p, no audio, $0.12). A temporal median filter in ffmpeg removed
+most of the stray specks, and it was scaled to 1080p.
 
 ## The memory worlds
 

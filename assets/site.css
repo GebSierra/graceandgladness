@@ -56,7 +56,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
   position: relative;
   height: clamp(220px, 30vw, 340px);
   overflow: hidden;
-  background: #D8C9A6 url('road-to-antioch.jpg') 50% 72% / cover no-repeat;
+  background: #D8C9A6 url('road-watercolor.jpg') 50% 78% / cover no-repeat;
 }
 .banner::after {
   content: ""; position: absolute; inset: 0;
