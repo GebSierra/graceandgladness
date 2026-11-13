@@ -34,9 +34,8 @@ again. Visitors who ask their device to reduce motion see the still
 autoplay.
 
 It was made from the watercolour `assets/road-watercolor.jpg` (its sky extended to 16:9 in
-`assets/road-watercolor-169.jpg`) with Google Veo 3.1 Lite through OpenRouter
-(4 seconds, 720p, no audio, $0.12). A temporal median filter in ffmpeg removed
-most of the stray specks, and it was scaled to 1080p.
+`assets/road-watercolor-169.jpg`) with Kling 3.0 Standard through OpenRouter (4 seconds, 720p, no audio,
+$0.42), then scaled to 1080p with ffmpeg.
 
 ## The memory worlds
 
