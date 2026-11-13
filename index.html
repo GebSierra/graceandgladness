@@ -91,6 +91,10 @@ body { overflow: hidden; }
 .revealed .btn.after:hover { transform: translateY(-1px); transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) { .after, .revealed .after { transition: none; } .way { transition: none; } }
 
+/* On wide screens, enlarge the scene from the bottom edge so the traveller sits above the links. */
+@media (min-width: 721px) {
+  .art img, .art video { top: auto; height: 130%; }
+}
 /* Short or narrow screens */
 @media (max-height: 760px) and (min-width: 721px) {
   .name { font-size: clamp(52px, 7.6vw, 104px); }
