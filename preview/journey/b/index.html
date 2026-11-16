@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>The Gospel | Preview | Grace and Gladness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cormorant+SC:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../../assets/site.css">
+<style>.pv-tag{position:fixed;z-index:60;left:50%;transform:translateX(-50%);bottom:14px;font:600 13px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:999px;opacity:.88;pointer-events:none}</style>
+<style>
+@view-transition { navigation: auto; }
+.banner { view-transition-name: banner; }
+.page { view-transition-name: page; }
+::view-transition-old(page) { animation: 300ms ease-out both pv-out; }
+::view-transition-new(page) { animation: 520ms cubic-bezier(.2,.7,.2,1) both pv-in; }
+::view-transition-group(banner) { animation-duration: 800ms; animation-timing-function: cubic-bezier(.2,.7,.2,1); }
+@keyframes pv-out { to { opacity: 0; transform: translateY(-8px); } }
+@keyframes pv-in { from { opacity: 0; transform: translateY(14px); } }
+</style>
+</head>
+<body>
+<header class="banner" style="background-position:82% 66%">
+  <div class="topbar">
+    <a class="wordmark" href="../../../"><span class="grace">Grace</span> <i>and</i> <span class="glad">Gladness</span></a>
+    <nav class="menu" aria-label="Preview pages"><a href="../a/">Scripture Memory</a><a href="../b/">The Gospel</a></nav>
+  </div>
+</header>
+<main class="page">
+  <p class="eyebrow">Preview</p>
+  <h1 class="title">The Gospel</h1>
+  <p class="lede">Same effect going back. It works in Chrome, Edge and Safari. Older browsers simply change page as they do now.</p>
+  <p style="margin-top:36px"><a class="btn" href="../a/">← Back to Scripture Memory</a></p>
+</main>
+<div class="pv-tag">Preview: page transitions</div>
+</body>
+</html>
