@@ -27,7 +27,12 @@ The site for graceandgladness.com. Plain HTML and CSS, no build step.
 
 ## The opening animation
 
-The opening is `assets/road-watercolor.mp4`: four seconds, muted, no loop.
+First the name "Grace and Gladness" rises letter by letter on a dark panel.
+The panel then lifts away, about one and a half seconds in, and the painting
+is underneath. This is plain CSS in `index.html` (`.opening`). A copy with a
+"Play again" link is in `preview/opening/`.
+
+The painting is `assets/road-watercolor.mp4`: four seconds, muted, no loop.
 It plays once on each page load and holds its last frame. A refresh plays it
 again. Visitors who ask their device to reduce motion see the still
 `assets/road-watercolor-poster.jpg` instead, and so do phones that refuse to

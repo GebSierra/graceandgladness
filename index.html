@@ -33,12 +33,28 @@ body { overflow: hidden; }
     linear-gradient(to bottom, rgba(var(--veil-rgb),0) 60%, rgba(var(--veil-rgb),.22) 100%);
 }
 
-/* 8. The reveal: the painting opens from a narrow strip by the traveller. */
-@keyframes curtain {
-  0%   { clip-path: inset(0 57% 0 39%); }
-  100% { clip-path: inset(0 0 0 0); }
+/* 8. The opening: the name rises letter by letter on a dark panel,
+   then the panel lifts away and the painting is there underneath. */
+.opening {
+  position: absolute; inset: 0; z-index: 10;
+  display: grid; place-items: center;
+  background: var(--ink);
+  animation: lift .9s cubic-bezier(.7,0,.2,1) 1.45s both;
 }
-.art { animation: curtain 1.6s cubic-bezier(.7,0,.2,1) .25s both; }
+.opening .mark {
+  font-weight: 600; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: .01em;
+  color: var(--paper); white-space: nowrap;
+}
+.opening .mark span {
+  display: inline-block;
+  animation: letter .6s cubic-bezier(.2,.7,.2,1) calc(.15s + var(--i) * 40ms) both;
+}
+.opening .mark .sp { width: .28em; animation: none; }
+@keyframes letter {
+  from { opacity: 0; transform: translateY(1.8em); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes lift { to { transform: translateY(-100%); visibility: hidden; } }
 
 /* Header: small wordmark, quiet menu. */
 .top {
@@ -61,15 +77,16 @@ body { overflow: hidden; }
 /* One button. */
 .go { margin-top: 30px; }
 
-/* The words arrive after the curtain opens. */
+/* The words arrive as the panel lifts. */
 @keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .lead > * { animation: arrive 1s cubic-bezier(.2,.7,.2,1) both; }
-.lead > :nth-child(1) { animation-delay: 1.5s; }
-.lead > :nth-child(2) { animation-delay: 1.7s; }
-.lead > :nth-child(3) { animation-delay: 1.9s; }
+.lead > :nth-child(1) { animation-delay: 1.95s; }
+.lead > :nth-child(2) { animation-delay: 2.1s; }
+.lead > :nth-child(3) { animation-delay: 2.25s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .art, .lead > * { animation: none; }
+  .opening { display: none; }
+  .lead > * { animation: none; }
 }
 @media (max-width: 720px) {
   .top { justify-content: center; }
@@ -81,6 +98,7 @@ body { overflow: hidden; }
 </head>
 <body>
 <main class="scene">
+  <div class="opening" aria-hidden="true"><p class="mark"><span style="--i:0">G</span><span style="--i:1">r</span><span style="--i:2">a</span><span style="--i:3">c</span><span style="--i:4">e</span><span class="sp"> </span><span style="--i:6">a</span><span style="--i:7">n</span><span style="--i:8">d</span><span class="sp"> </span><span style="--i:10">G</span><span style="--i:11">l</span><span style="--i:12">a</span><span style="--i:13">d</span><span style="--i:14">n</span><span style="--i:15">e</span><span style="--i:16">s</span><span style="--i:17">s</span></p></div>
   <div class="art" aria-hidden="true">
     <video id="scene" muted playsinline preload="auto" poster="assets/road-watercolor-poster.jpg">
       <source src="assets/road-watercolor.mp4" type="video/mp4">
@@ -116,7 +134,7 @@ body { overflow: hidden; }
   </div>
 </main>
 <script>
-// Play the scene once after the curtain opens, unless reduced motion is asked for.
+// Play the scene once as the opening panel lifts, unless reduced motion is asked for.
 (function () {
   var v = document.getElementById('scene');
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -136,7 +154,7 @@ body { overflow: hidden; }
     v.playbackRate = BASE;
     var p = v.play();
     if (p && p.then) p.then(function () { requestAnimationFrame(ease); }, function () {});
-  }, 1500);
+  }, 1600);
 })();
 </script>
 </body>

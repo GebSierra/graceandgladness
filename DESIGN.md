@@ -62,7 +62,7 @@ startup landing page.
 ## 8. Motion
 
 - Motion is slow, quiet and plays once. Nothing loops. Nothing bounces.
-- Allowed: the opening reveal, words fading in once, an arrow sliding a few pixels on hover, a menu preview fading in.
+- Allowed: the opening (the name rising letter by letter, then the panel lifting away), words fading in once, an arrow sliding a few pixels on hover, a menu preview fading in.
 - Every animation stops under `prefers-reduced-motion: reduce`.
 - Never make visitors wait more than about 2 seconds to read the page.
 
