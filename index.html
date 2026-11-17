@@ -120,7 +120,23 @@ body { overflow: hidden; }
 (function () {
   var v = document.getElementById('scene');
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  setTimeout(function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); }, 1500);
+  // Play at three-quarter speed, then ease to a gentle stop over the last
+  // second and a half, so the walk ends slowly instead of all at once.
+  var BASE = 0.75, EASE = 1.5, LOW = 0.4;
+  function ease() {
+    if (v.paused || v.ended) return;
+    var left = (v.duration || 0) - v.currentTime;
+    if (left > 0 && left < EASE) {
+      var t = left / EASE; // 1 at the start of the ease, 0 at the end
+      v.playbackRate = LOW + (BASE - LOW) * t * t;
+    }
+    requestAnimationFrame(ease);
+  }
+  setTimeout(function () {
+    v.playbackRate = BASE;
+    var p = v.play();
+    if (p && p.then) p.then(function () { requestAnimationFrame(ease); }, function () {});
+  }, 1500);
 })();
 </script>
 </body>
