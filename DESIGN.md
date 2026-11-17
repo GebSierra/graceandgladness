@@ -42,7 +42,7 @@ startup landing page.
 - Plain words and short sentences. No filler, no hype, no em dashes.
 - Say one specific thing. Avoid brochure phrases such as "discover," "unlock," "journey," "transform," "world-class," "unforgettable."
 - Headings state what the page is. Buttons say exactly where they go ("Start with the Bible in Three Pictures"), not "Learn more" or "Get started."
-- The site's line is: "Plain teaching for people who want to be glad in the grace of God." Do not invent new taglines.
+- The site's line is: "Plain teaching for people who want to be glad in God." Do not invent new taglines.
 - Never invent facts, quotes, statistics or stories. Bible quotes must be checked against a real translation and cite the reference.
 
 ## 6. Colour (Warm Earth)
