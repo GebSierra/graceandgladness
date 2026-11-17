@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Opening colours | Preview</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Plain teaching for people who want to be glad in God. The Bible in Three Pictures, Scripture memory, and the gospel.">
+<meta property="og:title" content="Grace and Gladness">
+<meta property="og:description" content="Plain teaching for people who want to be glad in God.">
+<meta property="og:image" content="https://graceandgladness.com/assets/road-watercolor.jpg">
+<meta name="theme-color" content="#FAF8EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="preload" as="image" href="../../assets/road-watercolor-poster.jpg">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+// Preview only: pick the opening panel colour from the address, e.g. ?v=sky
+document.documentElement.dataset.v = new URLSearchParams(location.search).get('v') || 'paper';
+</script>
+
+<style>
+html, body { height: 100%; }
+body { overflow: hidden; }
+.scene { position: fixed; inset: 0; overflow: hidden; background: var(--paper); }
+
+/* The painting, full bleed. */
+.art { position: absolute; inset: 0; }
+.art video {
+  position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 100%; display: block;
+}
+@media (min-width: 721px) { .art video { height: 122%; } }
+.art::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(var(--paper-rgb),.94) 0%, rgba(var(--paper-rgb),.6) 22%, rgba(var(--paper-rgb),0) 46%),
+    linear-gradient(to bottom, rgba(var(--veil-rgb),0) 60%, rgba(var(--veil-rgb),.22) 100%);
+}
+
+/* 8. The opening: the name rises letter by letter on a dark panel,
+   then the panel lifts away and the painting is there underneath. */
+.opening {
+  position: absolute; inset: 0; z-index: 10;
+  display: grid; place-items: center;
+  background: var(--ink);
+  animation: lift .9s cubic-bezier(.7,0,.2,1) 1.45s both;
+}
+.opening .mark {
+  font-weight: 600; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: .01em;
+  color: var(--paper); white-space: nowrap;
+}
+.opening .mark span {
+  display: inline-block;
+  animation: letter .6s cubic-bezier(.2,.7,.2,1) calc(.15s + var(--i) * 40ms) both;
+}
+.opening .mark .sp { width: .28em; animation: none; }
+@keyframes letter {
+  from { opacity: 0; transform: translateY(1.8em); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes lift { to { transform: translateY(-100%); visibility: hidden; } }
+
+/* Header: small wordmark, quiet menu. */
+.top {
+  position: relative; z-index: 3;
+  display: flex; align-items: center; justify-content: space-between; gap: 6px 28px; flex-wrap: wrap;
+  padding: max(20px, env(safe-area-inset-top)) clamp(20px, 5vw, 72px) 0;
+}
+.top .wordmark { font-size: 22px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 8px 0; }
+.menu { gap: 0 30px; font-size: 18px; }
+
+/* 1-5. One name, one line, one way in. Left aligned, smaller, more air. */
+.lead {
+  position: relative; z-index: 2;
+  max-width: 620px;
+  margin: clamp(48px, 13vh, 150px) 0 0 clamp(20px, 5vw, 72px);
+}
+.name { font-weight: 600; font-size: clamp(46px, 5.6vw, 80px); line-height: 1; letter-spacing: -.015em; color: var(--ink); }
+.line { text-wrap: balance; margin-top: 18px; font-size: clamp(21px, 1.9vw, 26px); line-height: 1.4; max-width: 24em; color: var(--ink); }
+
+/* One button. */
+.go { margin-top: 30px; }
+
+/* The words arrive as the panel lifts. */
+@keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.lead > * { animation: arrive 1s cubic-bezier(.2,.7,.2,1) both; }
+.lead > :nth-child(1) { animation-delay: 1.95s; }
+.lead > :nth-child(2) { animation-delay: 2.1s; }
+.lead > :nth-child(3) { animation-delay: 2.25s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .opening { display: none; }
+  .lead > * { animation: none; }
+}
+@media (max-width: 720px) {
+  /* On phones the big name below is the wordmark, so the top shows the menu instead. */
+  .top { justify-content: flex-start; padding-top: max(14px, env(safe-area-inset-top)); }
+  .top .wordmark { display: none; }
+  .top .menu { gap: 2px 20px; font-size: 17px; }
+  .top .menu a { padding: 7px 0 3px; }
+  .lead { margin: 6vh 20px 0; text-align: left; }
+  .go { font-size: 17px; padding: 10px 18px; }
+}
+
+/* ---- Preview only: four panel colours ---- */
+html[data-v="paper"] .opening { background: var(--paper); }
+html[data-v="paper"] .opening .mark { color: var(--ink); }
+html[data-v="sky"] .opening { background: var(--paper); overflow: hidden; }
+html[data-v="sky"] .opening::before {
+  content: ""; position: absolute; inset: -60px;
+  background: url('../../assets/road-watercolor-poster.jpg') 50% 100% / cover no-repeat;
+  filter: blur(18px); opacity: .6;
+}
+html[data-v="sky"] .opening .mark { position: relative; color: var(--ink); }
+html[data-v="olive"] .opening { background: var(--grace-dark); }
+.pick { position: fixed; z-index: 30; left: 50%; bottom: 16px; transform: translateX(-50%);
+  display: flex; gap: 4px; background: var(--paper); padding: 6px; border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(var(--ink-rgb),.2); font-size: 16px; white-space: nowrap; }
+.pick a { padding: 6px 12px; border-radius: 3px; text-decoration: none; color: var(--ink); }
+.pick a:hover { background: var(--paper-2); color: var(--ink); }
+html[data-v="brown"] .pick [data-v="brown"], html[data-v="paper"] .pick [data-v="paper"],
+html[data-v="sky"] .pick [data-v="sky"], html[data-v="olive"] .pick [data-v="olive"] { background: var(--grace); color: var(--paper); }
+</style>
+</head>
+<body>
+<main class="scene">
+  <div class="opening" aria-hidden="true"><p class="mark"><span style="--i:0">G</span><span style="--i:1">r</span><span style="--i:2">a</span><span style="--i:3">c</span><span style="--i:4">e</span><span class="sp"> </span><span style="--i:6">a</span><span style="--i:7">n</span><span style="--i:8">d</span><span class="sp"> </span><span style="--i:10">G</span><span style="--i:11">l</span><span style="--i:12">a</span><span style="--i:13">d</span><span style="--i:14">n</span><span style="--i:15">e</span><span style="--i:16">s</span><span style="--i:17">s</span></p></div>
+  <div class="art" aria-hidden="true">
+    <video id="scene" muted playsinline preload="auto" poster="../../assets/road-watercolor-poster.jpg">
+      <source src="../../assets/road-watercolor.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <header class="top">
+    <a class="wordmark" href="../../">Grace and Gladness</a>
+    <nav class="menu" aria-label="Main">
+      <div class="item">
+        <a href="../../bible/">The Bible in Three Pictures</a>
+        <div class="peek" aria-hidden="true"><img src="../../assets/peek/bible.jpg" alt=""><span>The whole story in twelve steps.</span></div>
+      </div>
+      <div class="item">
+        <a href="../../memory/">Scripture Memory</a>
+        <div class="peek" aria-hidden="true"><img src="../../assets/peek/memory.jpg" alt=""><span>Memorize a book of the Bible with a walkable location.</span></div>
+      </div>
+      <div class="item">
+        <a href="../../gospel/">The Gospel</a>
+        <div class="peek" aria-hidden="true"><img src="../../assets/peek/gospel.jpg" alt=""><span>A short story to read and share.</span></div>
+      </div>
+      <div class="item">
+        <a href="../../about/">About</a>
+        <div class="peek" aria-hidden="true"><img src="../../assets/peek/about.jpg" alt=""><span>Why Grace and Gladness.</span></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <h1 class="name">Grace and Gladness</h1>
+    <p class="line">Plain teaching for people who want to be glad in God.</p>
+    <a class="btn go" href="../../bible/">Start with the Bible in Three Pictures <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+</main>
+<nav class="pick" aria-label="Opening colour">
+  <a data-v="paper" href="?v=paper">1. Paper</a>
+  <a data-v="sky" href="?v=sky">2. Painted sky</a>
+  <a data-v="olive" href="?v=olive">3. Olive</a>
+  <a data-v="brown" href="?v=brown">Now: brown</a>
+</nav>
+<script>
+// Play the scene once as the opening panel lifts, unless reduced motion is asked for.
+(function () {
+  var v = document.getElementById('scene');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Play at three-quarter speed, then ease to a gentle stop over the last
+  // second and a half, so the walk ends slowly instead of all at once.
+  var BASE = 0.75, EASE = 1.5, LOW = 0.4;
+  function ease() {
+    if (v.paused || v.ended) return;
+    var left = (v.duration || 0) - v.currentTime;
+    if (left > 0 && left < EASE) {
+      var t = left / EASE; // 1 at the start of the ease, 0 at the end
+      v.playbackRate = LOW + (BASE - LOW) * t * t;
+    }
+    requestAnimationFrame(ease);
+  }
+  setTimeout(function () {
+    v.playbackRate = BASE;
+    var p = v.play();
+    if (p && p.then) p.then(function () { requestAnimationFrame(ease); }, function () {});
+  }, 1600);
+})();
+</script>
+</body>
+</html>

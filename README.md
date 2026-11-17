@@ -6,7 +6,7 @@ The site for graceandgladness.com. Plain HTML and CSS, no build step.
 
 - `index.html`: the opening scene. One screen, no scrolling. Links lead to the pages below.
 - `bible/`: The Bible in Three Pictures.
-- `memory/`: Scripture Memory, with a framed page for each memory world in `memory/colossians/`, `memory/james/` and `memory/tabernacle/`.
+- `memory/`: Scripture Memory, with a framed page for each memory world in `memory/colossians/`, `memory/james/`, `memory/sermon-on-the-mount/` and `memory/tabernacle/`.
 - `gospel/`: The Gospel, with the tract at www.hegavehis.life shown in a frame.
 - `about/`: Why Grace and Gladness.
 

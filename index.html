@@ -89,8 +89,11 @@ body { overflow: hidden; }
   .lead > * { animation: none; }
 }
 @media (max-width: 720px) {
-  .top { justify-content: center; }
-  .top .menu { display: none; }
+  /* On phones the big name below is the wordmark, so the top shows the menu instead. */
+  .top { justify-content: flex-start; padding-top: max(14px, env(safe-area-inset-top)); }
+  .top .wordmark { display: none; }
+  .top .menu { justify-content: flex-start; gap: 2px 20px; font-size: 17px; }
+  .top .menu a { padding: 7px 0 3px; }
   .lead { margin: 6vh 20px 0; text-align: left; }
   .go { font-size: 17px; padding: 10px 18px; }
 }

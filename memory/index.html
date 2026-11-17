@@ -14,14 +14,15 @@
 .intro { max-width: 34em; }
 .intro p + p { margin-top: 14px; }
 .intro .lede em { font-style: italic; }
-.worlds { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+.worlds { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; max-width: 1040px; }
 .world { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); background: var(--paper-2); border-radius: 3px; padding: 28px 28px 26px; border: 1px solid transparent; transition: border-color .2s ease; }
 .world:hover { color: var(--ink); border-color: var(--line); }
 .world h2 { font-weight: 600; font-size: clamp(30px, 2.6vw, 36px); line-height: 1.05; }
 .world p { margin-top: 10px; color: var(--ink-soft); flex-grow: 1; }
 .world .more { margin-top: 22px; }
 .sub { font-weight: 600; font-size: clamp(28px, 2.6vw, 34px); line-height: 1.1; margin-bottom: 14px; }
-@media (max-width: 900px) { .worlds { grid-template-columns: minmax(0,1fr); } }
+.page > .rule { max-width: 1040px; }
+@media (max-width: 760px) { .worlds { grid-template-columns: minmax(0,1fr); } }
 @media (prefers-reduced-motion: reduce) { .world { transition: none; } }
 </style>
 </head>
@@ -67,6 +68,11 @@
       <h2>James</h2>
       <p>Chapter 1 is built, in the town's market square. Chapters 2 to 5 are coming.</p>
       <span class="more">Enter the agora <span class="arrow" aria-hidden="true">→</span></span>
+    </a>
+    <a class="world rise d3" href="sermon-on-the-mount/">
+      <h2>The Sermon on the Mount</h2>
+      <p>Matthew 5 to 7 on a hillside above the Sea of Galilee. Begin where Jesus sat down and walk down to the shore.</p>
+      <span class="more">Climb the hill <span class="arrow" aria-hidden="true">→</span></span>
     </a>
     <a class="world rise d4" href="tabernacle/">
       <h2>The Tabernacle</h2>
