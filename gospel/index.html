@@ -13,13 +13,10 @@
 <style>
 .share { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
 .address { font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: var(--glad); text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
-.address:hover { color: #7A3815; }
-.frame { margin: 40px 0 0; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 0 var(--line), 0 24px 50px rgba(23,59,43,.18); border: 1px solid var(--line); }
-.bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--paper-2); border-bottom: 1px solid var(--line); font-size: 16px; }
-.bar i { width: 10px; height: 10px; border-radius: 50%; background: #D9C9A6; }
-.bar span { margin-left: 8px; flex-grow: 1; background: var(--paper); border-radius: 3px; padding: 1px 12px; color: var(--ink-soft); }
+.address:hover { color: var(--ink); }
+.frame { margin: 48px 0 0; max-width: 1040px; background: #fff; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
 .frame iframe { display: block; width: 100%; height: min(78vh, 760px); border: 0; }
-.fallback { margin-top: 14px; font-size: 17px; color: var(--ink-soft); }
+.fallback { margin-top: 14px; max-width: 34em; font-size: 17px; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -47,8 +44,7 @@
   </div>
 </header>
 <main class="page">
-  <p class="eyebrow rise">The Gospel</p>
-  <h1 class="title rise d1">Good news worth passing on.</h1>
+  <h1 class="title rise">Good news worth passing on.</h1>
   <p class="lede rise d2">A short, clear account of what Jesus did and why it matters. Read it, then share this with your friends.</p>
 
   <div class="share rise d3">
@@ -57,7 +53,6 @@
   </div>
 
   <figure class="frame rise d4">
-    <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>www.hegavehis.life</span></div>
     <iframe src="https://www.hegavehis.life" title="The gospel tract at www.hegavehis.life" loading="lazy"></iframe>
   </figure>
   <p class="fallback">If the page above does not show, <a href="https://www.hegavehis.life">open www.hegavehis.life</a>.</p>

@@ -45,9 +45,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
   border: 0; border-radius: 3px;
   cursor: pointer;
   box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 6px 18px rgba(var(--ink-rgb),.22);
-  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+  transition: background .2s ease;
 }
-.btn:hover { background: var(--grace-dark); color: var(--paper); transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 10px 24px rgba(var(--ink-rgb),.28); }
+.btn:hover { background: var(--grace-dark); color: var(--paper); }
 .btn.quiet { background: transparent; color: var(--grace); box-shadow: inset 0 0 0 1.5px var(--grace); }
 .btn.quiet:hover { background: var(--grace); color: var(--paper); }
 
@@ -64,21 +64,20 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
 }
 .topbar {
   position: relative; z-index: 2;
-  max-width: 1240px; margin: 0 auto;
-  padding: 18px 28px;
+  padding: 18px clamp(20px, 5vw, 72px);
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 28px;
 }
-.topbar .wordmark { font-size: 27px; padding: 8px 0; }
-.menu { display: flex; flex-wrap: wrap; gap: 0 26px; font-size: 19px; }
+.topbar .wordmark { font-size: 22px; padding: 8px 0; }
+.menu { display: flex; flex-wrap: wrap; gap: 0 30px; font-size: 18px; }
 .menu a { color: var(--ink); text-decoration: none; padding: 11px 0; border-bottom: 1.5px solid transparent; }
 .menu a:hover { color: var(--grace); border-bottom-color: currentColor; }
 .menu a[aria-current="page"] { color: var(--grace); border-bottom-color: var(--grace); }
 
 /* ---------- Inner page body ---------- */
-.page { max-width: 1040px; margin: 0 auto; padding: 36px 28px 96px; position: relative; z-index: 2; }
+.page { max-width: 1240px; padding: 40px clamp(20px, 5vw, 72px) 112px; position: relative; z-index: 2; }
 .eyebrow { font-size: 15px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--glad); }
-.title { margin-top: 6px; font-weight: 600; font-size: clamp(44px, 6vw, 76px); line-height: 1; letter-spacing: -.01em; }
-.lede { margin-top: 18px; font-size: clamp(22px, 2.2vw, 26px); max-width: 32em; color: var(--ink); }
+.title { margin-top: 8px; font-weight: 600; font-size: clamp(40px, 4.4vw, 64px); line-height: 1.05; letter-spacing: -.01em; max-width: 16em; text-wrap: balance; }
+.lede { margin-top: 20px; font-size: clamp(21px, 1.9vw, 25px); line-height: 1.45; max-width: 32em; color: var(--ink); text-wrap: pretty; }
 .rule { height: 1px; background: var(--line); border: 0; margin: 48px 0; }
 .prose p + p { margin-top: 14px; }
 .prose { max-width: 36em; }
@@ -86,11 +85,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
 /* ---------- Footer ---------- */
 .foot {
   border-top: 1px solid var(--line);
-  padding: 28px;
+  padding: 28px clamp(20px, 5vw, 72px);
   font-size: 17px; color: var(--ink-soft);
   display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 24px; text-align: center;
 }
 .foot .wordmark { font-size: 20px; }
+.foot span { text-wrap: balance; }
 
 /* ---------- Arrival motion, once per load ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
@@ -101,9 +101,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
 @media (max-width: 720px) {
   body { font-size: 19px; }
   .topbar { padding: 12px 20px; justify-content: center; }
-  .topbar .wordmark { font-size: 24px; }
   .menu { justify-content: center; gap: 0 18px; font-size: 17px; }
-  .page { padding: 24px 20px 72px; }
+  .topbar .menu a { padding: 6px 0 3px; }
+  .topbar .menu { row-gap: 10px; }
+  .page { padding: 28px 20px 80px; }
   .banner { height: 200px; background-position: 30% 78%; }
 }
 @media (max-width: 720px) {
@@ -142,3 +143,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
 .btn:hover .arrow, .btn:focus-visible .arrow { transform: translateX(5px); }
 @media (prefers-reduced-motion: reduce) { .peek, .btn .arrow { transition: none; } }
 @media (hover: none), (max-width: 720px) { .peek { display: none; } }
+
+/* Links that end with an arrow: the arrow moves a little on hover, like the button's. */
+.more { font-weight: 600; color: var(--grace); }
+.more .arrow { display: inline-block; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+a:hover .more .arrow, a:focus-visible .more .arrow { transform: translateX(5px); }
+@media (prefers-reduced-motion: reduce) { .more .arrow { transition: none; } }
+h1, h2, h3 { text-wrap: balance; }
