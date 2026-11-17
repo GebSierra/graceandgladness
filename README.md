@@ -50,3 +50,11 @@ Search the pages for `TODO`:
 
 - `about/index.html`: two or three sentences about who writes the site.
 - The full lessons for the Bible in Three Pictures.
+
+## Email sign-up
+
+The form on `bible/` posts to whatever address is in its `data-endpoint`
+attribute. Until that is set, it tells visitors sign-up opens soon. It sends
+an `email` field and a hidden `_gotcha` field that catches spam bots, which
+suits Formspree and similar services. Paste the service's form address into
+`data-endpoint` and the form works.

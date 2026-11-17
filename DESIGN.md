@@ -56,6 +56,7 @@ startup landing page.
 - Use the watercolour painting and art made in the same hand-painted style. No stock photos, no 3D renders, no gradients standing in for art, no AI sparkle or glow effects.
 - One picture per screen is enough. Let it bleed to the edges; do not frame it in a rounded card.
 - Never depict Christ.
+- Art with a white background sits on the paper colour with `mix-blend-mode: multiply`, so no white box shows.
 - Pictures that are only decoration get `alt=""` and `aria-hidden="true"`.
 
 ## 8. Motion
@@ -68,7 +69,7 @@ startup landing page.
 ## 9. Small crafted details (use these consistently)
 
 - Buttons with an arrow: the arrow moves about 5px right on hover.
-- Main menu items may show a small picture of where they lead on hover (mouse devices only, via `@media (hover: hover)`).
+- Main menu items show a small picture of where they lead on hover (mouse devices only, via `@media (hover: hover)`). Every menu picture gets the same soft oval fade (`.peek img` in `site.css`). Never turn it off for one picture. If the art is wide or has text near its edges, place it centred on a plain field (white or paper) first, so the fade only touches empty space. Save it at 520 by 291 pixels in `assets/peek/`.
 - Links are underlined or clearly coloured. Focus outlines stay visible.
 
 ## 10. Before you finish any page

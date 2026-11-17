@@ -141,5 +141,4 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--glad); outline-
 .btn .arrow { display: inline-block; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
 .btn:hover .arrow, .btn:focus-visible .arrow { transform: translateX(5px); }
 @media (prefers-reduced-motion: reduce) { .peek, .btn .arrow { transition: none; } }
-.peek img.wide { object-fit: contain; -webkit-mask-image: none; mask-image: none; background: #fff; border-radius: 3px; }
 @media (hover: none), (max-width: 720px) { .peek { display: none; } }

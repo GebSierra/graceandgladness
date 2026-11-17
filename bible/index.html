@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Bible in Three Pictures | Grace and Gladness</title>
-<meta name="description" content="The Bible in Three Pictures. Coming soon.">
+<meta name="description" content="The whole story of the Bible in twelve steps. Coming soon. Leave your email to hear when it opens.">
 <meta name="theme-color" content="#FAF8EC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     <nav class="menu" aria-label="Main">
       <div class="item">
         <a href="../bible/" aria-current="page">The Bible in Three Pictures</a>
-        <div class="peek" aria-hidden="true"><img src="../assets/peek/bible.jpg" class="wide" alt=""><span>The whole story in twelve steps.</span></div>
+        <div class="peek" aria-hidden="true"><img src="../assets/peek/bible.jpg" alt=""><span>The whole story in twelve steps.</span></div>
       </div>
       <div class="item">
         <a href="../memory/">Scripture Memory</a>
@@ -36,9 +36,60 @@
   </div>
 </header>
 <main class="page">
+  <p class="eyebrow rise">Coming soon</p>
   <h1 class="title rise d1">The Bible in Three Pictures</h1>
-  <p class="lede rise d2">Coming soon.</p>
+  <p class="lede rise d2">The whole story of the Bible in twelve steps. Learn three pictures and you will know where every book fits.</p>
+
+  <figure class="timeline rise d3">
+    <img src="../assets/bible-three-pictures.jpg" width="1800" height="696" alt="A timeline of the Bible in three pictures: the World, Egypt and the Land, leading to the Cross, with twelve steps beginning Adam, Ark, Abraham.">
+  </figure>
+
+  <section class="signup" aria-labelledby="signup-title">
+    <h2 id="signup-title">Be the first to know</h2>
+    <p>Leave your email and we will send one note when the lessons open. Nothing else.</p>
+    <!-- Set data-endpoint to the sign-up service's form address. See README.md. -->
+    <form id="signup" data-endpoint="" method="post" novalidate>
+      <label for="email">Email address</label>
+      <div class="row">
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        <button class="btn" type="submit">Tell me when it opens <span class="arrow" aria-hidden="true">→</span></button>
+      </div>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="trap">
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
 </main>
+<style>
+.timeline { margin: 48px 0 0; background: var(--paper); }
+.timeline img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.signup { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line); max-width: 36em; }
+.signup h2 { font-weight: 600; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.1; }
+.signup > p { margin-top: 10px; color: var(--ink-soft); }
+.signup form { margin-top: 22px; }
+.signup label { display: block; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+.signup .row { display: flex; flex-wrap: wrap; gap: 10px; }
+.signup input[type=email] { flex: 1 1 240px; min-width: 0; min-height: 48px; font: inherit; font-size: 19px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 3px; padding: 8px 14px; }
+.signup input[type=email]:focus { outline: 3px solid var(--glad); outline-offset: 2px; border-color: var(--ink-soft); }
+.signup .trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.signup .status { margin-top: 12px; min-height: 1.5em; color: var(--grace); font-weight: 600; }
+.signup .status.err { color: var(--glad); }
+</style>
+<script>
+(function () {
+  var f = document.getElementById('signup'), s = f.querySelector('.status'), e = f.querySelector('#email');
+  f.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    s.className = 'status';
+    if (!e.value || !e.checkValidity()) { s.className = 'status err'; s.textContent = 'Please enter a full email address.'; e.focus(); return; }
+    var url = f.getAttribute('data-endpoint');
+    if (!url) { s.className = 'status err'; s.textContent = 'Sign-up opens in a few days. Please check back.'; return; }
+    s.textContent = 'Sending...';
+    fetch(url, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw r; f.reset(); s.textContent = 'Thank you. We will email you when it opens.'; })
+      .catch(function () { s.className = 'status err'; s.textContent = 'That did not go through. Please try again.'; });
+  });
+})();
+</script>
 <footer class="foot">
   <a class="wordmark" href="../">Grace and Gladness</a>
   <span>Plain teaching for people who want to be glad in God.</span>
