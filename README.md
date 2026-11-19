@@ -27,7 +27,7 @@ The site for graceandgladness.com. Plain HTML and CSS, no build step.
 
 ## The opening animation
 
-First the name "Grace and Gladness" rises letter by letter on a dark panel.
+First the name "Grace and Gladness" rises letter by letter on a paper-coloured panel.
 The panel then lifts away, about one and a half seconds in, and the painting
 is underneath. This is plain CSS in `index.html` (`.opening`). A copy with a
 "Play again" link is in `preview/opening/`.
